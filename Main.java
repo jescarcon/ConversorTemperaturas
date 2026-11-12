@@ -2,22 +2,46 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         ConversorTemperaturas conversor = new ConversorTemperaturas();
 
-        System.out.println("=== CONVERSOR DE TEMPERATURAS (Celsius a Fahrenheit) ===");
-        System.out.print("Ingrese la temperatura en grados Celsius: ");
-        
-        // Leemos el valor ingresado por el usuario
-        double celsius = scanner.nextDouble();
+        System.out.println("=== CONVERSOR DE TEMPERATURAS ===");
+        System.out.println("1. Celsius a Fahrenheit");
+        System.out.println("2. Fahrenheit a Celsius");
+        System.out.print("Seleccione una opción: ");
 
-        // Realizamos la conversión usando el método de la clase
-        double fahrenheit = conversor.celsiusAFahrenheit(celsius);
+        int opcion = scanner.nextInt();
 
-        // Mostramos el resultado por consola
-        System.out.println(celsius + " °C equivalen a " + fahrenheit + " °F");
+        switch (opcion) {
 
-        // Cerramos el scanner para evitar fugas de recursos
+            case 1:
+                System.out.print("Ingrese la temperatura en Celsius: ");
+
+                double celsius = scanner.nextDouble();
+
+                double fahrenheit = conversor.celsiusAFahrenheit(celsius);
+
+                System.out.println(celsius + " °C equivalen a "
+                        + fahrenheit + " °F");
+                break;
+
+            case 2:
+                System.out.print("Ingrese la temperatura en Fahrenheit: ");
+
+                double fahrenheit2 = scanner.nextDouble();
+
+                double celsius2 = conversor.fahrenheitACelsius(fahrenheit2);
+
+                System.out.println(fahrenheit2 + " °F equivalen a "
+                        + celsius2 + " °C");
+                break;
+
+            default:
+                System.out.println("Opción no válida.");
+                break;
+        }
+
         scanner.close();
     }
 }
